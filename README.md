@@ -23,6 +23,17 @@ cd paleolandmarker
 python -m venv .venv
 source .venv/bin/activate
 # Windows PowerShell: .venv\Scripts\Activate.ps1
+~~~
+
+Install PyTorch according to your hardware before installing the remaining dependencies. Use the official [PyTorch Start Locally](https://pytorch.org/get-started/locally/) selector, choose your operating system, Pip, Python, and compute platform, then run the generated command inside the activated virtual environment. Select `CPU` if CUDA is not available; for an NVIDIA GPU, select the CUDA version supported by your driver. Verify the installation with:
+
+~~~bash
+python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+~~~
+
+The complete paper experiment command uses `--require-cuda` and will stop if PyTorch cannot access CUDA.
+
+~~~bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python -m pip install -e .
