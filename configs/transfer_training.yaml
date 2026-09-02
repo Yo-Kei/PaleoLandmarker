@@ -1,0 +1,30 @@
+seed: 42
+device: auto
+model: medium
+model_architecture: context_resize
+num_landmarks: 1  # Replace with the number of landmarks in your dataset.
+image_size: 224
+heatmap_size: 112
+heatmap_sigma: 8.0
+data_dir: data/real/splits_224/my_dataset
+output_dir: artifacts/reproduction/transfer/my_dataset_medium_50shots
+epochs: 400
+batch_size: 8
+num_workers: 4
+learning_rate: 0.001
+weight_decay: 0.00001
+augmentation: true
+augmentation_mode: bounded_affine
+pretrain_augmentation: true
+pck_thresholds: [3, 5, 10]
+decode:
+  method: softargmax
+  temperature: 40.0
+loss:
+  name: heatmap_coord
+  coord_weight: 0.10
+  softargmax_temperature: 40.0
+val_max_samples: 100
+test_max_samples: 100
+shot_count: 50
+init_checkpoint: checkpoints/PaleoLandmarker-Medium-pretrained.pt

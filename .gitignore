@@ -1,0 +1,28 @@
+# Local environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+
+# Reproduction outputs
+artifacts/
+*.log
+
+# Large data and model assets are distributed as GitHub Release assets.
+data/**
+!data/README.md
+checkpoints/**
+!checkpoints/README.md
+release_assets/
+
+# Model files should never enter normal Git history accidentally.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx

@@ -1,0 +1,22 @@
+seed: 42
+image_size: 224
+heatmap_size: 112
+num_landmarks: 18
+data_dir: data/synthetic/multidomain
+output_dir: artifacts/outputs/synthetic_multidomain
+source_domains:
+  - conodont_element
+  - fusulinid_section
+  - gastropod_shell
+  - microtus_dentition
+  - bryozoan_zooid
+  - trilobite
+source_counts: {train: 3000, val: 500, test: 500}
+batch_size: 16
+num_workers: 4
+epochs: 50
+learning_rate: 0.001
+weight_decay: 0.00001
+heatmap_sigma: 8.0
+augmentation: true
+pck_thresholds: [3, 5, 10]
