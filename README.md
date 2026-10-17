@@ -150,6 +150,8 @@ python scripts/infer.py \
 
 Single-image inference writes the overlay, prints the numeric `(x, y)` coordinates to the terminal, and writes a TPS file when `--tps-output` is supplied. For a directory, replace `--image` with `--image-dir`; a TPS file is then written automatically to `<image-dir>/predictions.tps` unless `--tps-output` is supplied. Add `--visualization-dir` to save one source-resolution overlay per image. Inference does not require an NPZ file; it loads the model configuration and checkpoint, letterboxes each raster image, and restores predictions to the original image coordinates.
 
+For downstream morphometric analysis, run `python scripts/downstream_morphospace.py --manual manual.npy --predicted predicted.npy --sample-size 20 --output artifacts/downstream`. Inputs are paired NumPy arrays of shape `(N, K, 2)`, with matching specimens, landmark order, and coordinate conventions. The script performs GPA and PCA, compares the first two principal components using Procrustes correlation over 100 random subsamples (`--repeats`), and saves a CSV of similarities and a paired morphospace plot in PNG/PDF.
+
 ## Reproducing the paper experiments
 
 Before running the complete matrix, download and extract the processed real-data and Synthetic-data archives from the repository's GitHub Releases page:
